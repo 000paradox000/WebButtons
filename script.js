@@ -94,8 +94,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         change_button_state();
     });
 });
-
-//
-// window.addEventListener('beforeunload', function () {
-//     remove_storage_key();
-// });
