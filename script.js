@@ -4,7 +4,7 @@
 const active_color = "black";
 const active_label = "Deactivate";
 
-const inactive_color = "#CDCDCD";
+const inactive_color = "dimgrey";
 const inactive_label = "Activate";
 
 const storage_key_name = "button_state";
