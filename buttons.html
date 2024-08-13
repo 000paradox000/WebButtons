@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Background Color</title>
+    <style>
+        body.black-background {
+            background-color: black;
+            color: white;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleButton">Toggle Background</button>
+
+    <script>
+        // Function to toggle the background color
+        function toggleBackground() {
+            const body = document.body;
+            const isBlack = body.classList.toggle('black-background');
+            localStorage.setItem('background', isBlack ? 'black' : 'white');
+
+            // Use the history API to update the state
+            if (isBlack) {
+                history.pushState({ background: 'black' }, '');
+            } else {
+                history.replaceState({}, '');
+            }
+        }
+
+        // Check local storage for the background color on page load
+        window.addEventListener('load', () => {
+            const savedBackground = localStorage.getItem('background');
+            if (savedBackground === 'black') {
+                document.body.classList.add('black-background');
+                history.replaceState({ background: 'black' }, '');
+            }
+        });
+
+        // Event listener for the button
+        document.getElementById('toggleButton').addEventListener('click', toggleBackground);
+
+        // Reset background color and navigate back when popstate is detected
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.background === 'black') {
+                document.body.classList.add('black-background');
+            } else {
+                document.body.classList.remove('black-background');
+            }
+        });
+    </script>
+</body>
+</html>
