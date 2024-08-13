@@ -35,6 +35,20 @@ function init_storage_value() {
 }
 
 /**
+ * Back
+ */
+function restrict_back_functionality() {
+  // Push a dummy state to the history
+  history.pushState(null, null, location.href);
+
+  // Add event listener for popstate
+  window.addEventListener('popstate', function(event) {
+    // Redirect to the same page
+    location.href = location.href;
+  });
+}
+
+/**
  * Page refresh
  */
 function page_refreshed() {
@@ -52,6 +66,7 @@ function activate_button() {
     body.style.backgroundColor = active_color;
     the_button.textContent = active_label;
     update_storage_value(storage_active_value);
+    restrict_back_functionality();
 }
 
 function deactivate_button() {
