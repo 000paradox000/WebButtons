@@ -1,0 +1,31 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: dimgrey;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#the-button {
+    padding: 10px 20px;
+    font-size: 4rem;
+}
+
+a {
+    color: blue;
+    font-size: 2rem;
+    margin-top: 10px;
+}
